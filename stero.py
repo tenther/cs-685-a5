@@ -5,17 +5,18 @@ import pdb
 
 def main():
 
-    il = cv.imread('tsukuba1.tif')
-    ir = cv.imread('tsukuba2.tif')
-    
+    gauss_binomial_approx = {
+        3: '1 2 1',
+        5: '1 4 6 4 1',
+        7: '1 6 15 20 15 6 1',
+        9: '1 8 28 56 70 56 28 8 1',
+        11: '1 10 45 120 210 252 210 120 45 10 1',
+        13: '1 12 66 220 495 792 924 792 495 220 66 12 1',
+    }
     width_mask = {
         'gauss': {
             1: [1.0],
-            3: np.array([.25, .5, .25]),
-            5: np.array([1, 4, 6, 4, 1])/16,
-            7: np.array([1,6,15,20,15,6,1])/64,
-            9: np.array([0.00390625, 0.03125, 0.109375, 0.21875, 0.2734375, 0.21875, 0.109375, 0.03125, 0.00390625]),
-        },
+            },
         'flat': {
             1: [1.0],
             3: np.ones(3),
@@ -25,10 +26,18 @@ def main():
             },
     }        
 
+    for k, v in gauss_binomial_approx.items():
+        ar = np.array(v.split(), dtype=np.float64)
+        ar /= sum(ar)
+        width_mask['gauss'][k] = ar.reshape(len(ar), 1)
+
     stat_funcs = {
         'average': np.average,
         'median': np.median,
         }
+
+    il = cv.imread('tsukuba1.tif')
+    ir = cv.imread('tsukuba2.tif')
 
     for mask_type in ['gauss', 'flat']:
         for ssd_width in sorted(width_mask[mask_type].keys()):

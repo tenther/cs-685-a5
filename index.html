@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS 682 &mdash; Assignment 1</title>
+
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+      <h1>CS 685 &mdash; Assignment 4. Paul McKerley</h1>
+      <ol>
+	<li> 
+	  <p>
+	    
+	  </p>
+	</li>
+	<li>
+	  <p>
+	    I used Gaussian smoothing. This is the image I used for filtering:
+	    <img src="rgb.png">
+	  </p>
+	  <p>
+	    <table border=1 class="table table-bordered">
+	      <thead>
+		<tr><th>Filter width</th><th>3</th><th>7</th><th>11</th><th>13</th></tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>2D Image</td>
+		  <td><img src="smoothed_3.png"></td>
+		  <td><img src="smoothed_7.png"></td>
+		  <td><img src="smoothed_11.png"></td>
+		  <td><img src="smoothed_13.png"></td>
+		</tr>
+		<tr>
+		  <td>2D Complexity</td>
+		  <td>9wh multiplications,9wh additions</td>
+		  <td>49wh multiplications,49wh additions</td>
+		  <td>121wh multiplications,121wh additions</td>
+		  <td>169wh multiplications,169wh additions</td>
+		</tr>
+		<tr>
+		  <td>2D Timing</td>
+		  <td>0.04380321502685547</td>
+		  <td>0.1538236141204834</td>
+		  <td>0.35546112060546875</td>
+		  <td>0.4898362159729004</td>
+		</tr>
+		<tr>
+		  <td>1D Image</td>
+		  <td><img src="smoothed_3_1D.png"></td>
+		  <td><img src="smoothed_7_1D.png"></td>
+		  <td><img src="smoothed_11_1D.png"></td>
+		  <td><img src="smoothed_13_1D.png"></td>
+		</tr>
+		<tr>
+		  <td>1D Complexity</td>
+		  <td>6wh multiplications,6wh additions</td>
+		  <td>14wh multiplications,14wh additions</td>
+		  <td>22wh multiplications,22wh additions</td>
+		  <td>26wh multiplications,26wh additions</td>
+		</tr>
+		<tr>
+		  <td>2D Time</td>
+		  <td>0.03534722328186035</td>
+		  <td>0.05691242218017578</td>
+		  <td>0.06844186782836914</td>
+		  <td>0.08387112617492676</td>
+		</tr>
+	      </tbody>
+	    </table>
+	  </p>
+	  <p>And here is the <a href="smooth.py">code used to produce it.</a></p>
+	  <p>
+	  </p>
+	</li>
+      </ol>
+  </body>
+</html>

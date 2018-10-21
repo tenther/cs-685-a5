@@ -36,6 +36,8 @@ def main():
     x2 = np.matmul(C,Xh)     
     x2 = x2.reshape(N,3)/ x2[:,2].reshape(N)[:,None]
 
+    pdb.set_trace()
+
     print("C = {}".format(C))
     print("initial camera coordinates = {}".format(x.transpose()))
     print("calculated camera coordinates = {}".format(x2))

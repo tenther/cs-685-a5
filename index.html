@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CS 682 &mdash; Assignment 1</title>
+    <title>CS 682 &mdash; Assignment 4</title>
 
     <!-- Bootstrap -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -16,9 +16,13 @@
       <h1>CS 685 &mdash; Assignment 4. Paul McKerley</h1>
       <ol>
 	<li> 
-	  <p>
-	    
-	  </p>
+	  <p>I calculated that the matrix to transform the grid coordinates to camera coordinates is:</p>
+<pre>
+0.02360139 -0.02705601  0.05512207  0.00657837
+0.0524441   0.03959799 -0.00301857  0.00657837
+-0.0319388   0.0450274   0.03577627 -0.01324445
+</pre>
+	  <p>But I didn't understand how the math well enough to get further than that. The code I used to get that results <a href="camera_calibration.py">is here.</a></p>
 	</li>
 	<li>
 	  <p>
@@ -54,10 +58,10 @@
 		</tr>
 		<tr>
 		  <td>1D Image</td>
-		  <td><img src="smoothed_3_1D.png"></td>
-		  <td><img src="smoothed_7_1D.png"></td>
-		  <td><img src="smoothed_11_1D.png"></td>
-		  <td><img src="smoothed_13_1D.png"></td>
+		  <td><img src="smoothed_3_1D.png"/></td>
+		  <td><img src="smoothed_7_1D.png"/></td>
+		  <td><img src="smoothed_11_1D.png"/></td>
+		  <td><img src="smoothed_13_1D.png"/></td>
 		</tr>
 		<tr>
 		  <td>1D Complexity</td>
@@ -78,6 +82,65 @@
 	  </p>
 	  <p>And here is the <a href="smooth.py">code used to produce it.</a></p>
 	  <p>
+	  </p>
+	</li>
+	<li><p>I tried various settings to see which worked better to
+	find the distances on the image. I tried patch sized that
+	ranged from 3-27; I left the image in RGB format, and then
+	which figuring out the best shift for a pixel, used either the
+	average, or median RGB pixel value; I also tried weighting
+	each value by 1/(k**2), where k is the width of the filter, or
+	with an estimated gaussian weighting. When I had the shifts, I
+	normalized them to [0.0-1.0] and assigned the same colors as
+	in the slides so that there were about the same number of
+	pixels in each category.</p>
+
+	  <p>The results don't look as good those in the slides, but
+	    things are ordered the right way. Perhaps a different set
+	    of color thresholds would have looked better.</p>
+	  <p>The code to produce it is <a href="stereo.py">here<a/>.</p>
+	    
+	  <p>
+	  <table border=1 class="table table-bordered">
+	    <thead>
+	      <tr><th>Filter
+	      type</th><th>3</th><th>7</th><th>11</th><th>13</th><th>27</th></tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>median flat</td>
+		  <td><img src="ssd_median_flat_3.png"/></td>
+		  <td><img src="ssd_median_flat_7.png"/></td>
+		  <td><img src="ssd_median_flat_11.png"/></td>
+		  <td><img src="ssd_median_flat_13.png"/></td>
+		  <td><img src="ssd_median_flat_27.png"/></td>
+		</tr>
+		<tr>
+		  <td>average flat</td>
+		  <td><img src="ssd_average_flat_3.png"/></td>
+		  <td><img src="ssd_average_flat_7.png"/></td>
+		  <td><img src="ssd_average_flat_11.png"/></td>
+		  <td><img src="ssd_average_flat_13.png"/></td>
+		  <td><img src="ssd_average_flat_27.png"/></td>
+		</tr>
+		<tr>
+		  <td>median gauss</td>
+		  <td><img src="ssd_median_gauss_3.png"/></td>
+		  <td><img src="ssd_median_gauss_7.png"/></td>
+		  <td><img src="ssd_median_gauss_11.png"/></td>
+		  <td><img src="ssd_median_gauss_13.png"/></td>
+		  <td><img src="ssd_median_gauss_27.png"/></td>
+		</tr>
+		<tr>
+		  <td>average gauss</td>
+		  <td><img src="ssd_average_gauss_3.png"/></td>
+		  <td><img src="ssd_average_gauss_7.png"/></td>
+		  <td><img src="ssd_average_gauss_11.png"/></td>
+		  <td><img src="ssd_average_gauss_13.png"/></td>
+		  <td><img src="ssd_average_gauss_27.png"/></td>
+		</tr>
+	      </tbody>
+	  </table>
 	  </p>
 	</li>
       </ol>
